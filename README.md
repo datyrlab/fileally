@@ -33,6 +33,6 @@ python3 fileally/files_python/jobs/projectsupdate.py \
 
 ### Windows
 ```
-python3 fileally/files_python/jobs/projectsupdate.py \
+python fileally/files_python/jobs/projectsupdate.py `
 --proj '{\"filepath\":\"files_python/json/projects/projectlisttest.json\", \"pdflist\":[]}'
 ```
