@@ -35,7 +35,7 @@ def parseProjects(proj):
 
 def createProject(proj:dict, item:dict) -> None:
     if isinstance(item.get('project'), str):
-        print(f"\033[1;30;47mproject: {item.get('project')}\033[0m")
+        print(f"\033[1;30;47mproject: {item.get('project')}\033[0m") if not re.search("^Windows", platform.platform()) else print(f"project: {item.get('project')}")
         directory = f"{os.path.dirname(project_dir)}/{item.get('project')}"
         functionlist = [projectDir, documentationDir, parsePackages, documentationUpdate]
         f = [f(proj, directory, item) for f in functionlist]
@@ -58,10 +58,10 @@ def createPackage(proj:dict, directory:str, packagename:str):
     
     obj = class_packages.Packages({"proj":proj, "projectdir":directory, "packagename":packagename, "docpath":f"{directory}/{docdirrelative}/custom/{packagename}"})
     if hasattr(obj, f"{l[-1]}Package"):
-        print(f"\033[1;36;40mpackagename: {packagename}\033[0m")
+        print(f"\033[1;36;40mpackagename: {packagename}\033[0m") if not re.search("^Windows", platform.platform()) else print(f"packagename: {packagename}")
         getattr(obj,f"{l[-1]}Package")({})
     else:
-        print(f"\033[1;31;40mpackagename: {packagename}, add {l[-1]}Package to class_packages.Packages\033[0m")
+        print(f"\033[1;31;40mpackagename: {packagename}, add {l[-1]}Package to class_packages.Packages\033[0m")  if not re.search("^Windows", platform.platform()) else print(f"packagename: {packagename}, add {l[-1]}Package to class_packages.Packages")
 
 def documentationDir(proj:dict, directory:str, item:dict):
     from os.path import expanduser
