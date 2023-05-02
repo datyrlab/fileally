@@ -74,7 +74,7 @@ class Files:
     def writeFile(self, kwargs:dict) -> None:
         """ writes content to a file, will open a new empty file if content is 'None' """
         def createEmptyFile(filepath:str, content:Any) -> None:
-            if re.search("^Windows", platform.platform()) 
+            if re.search("^Windows", platform.platform()):
                 with open(filepath, 'w') as f:
                     pass
             else: 
