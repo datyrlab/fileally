@@ -200,7 +200,7 @@ def createLinkIndex(directory:str) -> None:
     if isinstance(directory, str):
         os.remove(f"{directory}.adoc") if os.path.exists(f"{directory}.adoc") else None
         y = os.listdir(directory) if os.path.exists(directory) else None
-        l = [x for x in y if not re.search("DELETE|ignore|xxxx.adoc", x)]
+        l = [x for x in y if not re.search(".swp$|DELETE|ignore|xxxx.adoc", x)]
         if len(l) > 0:
             l.sort()
             class_files.Files({}).writeFile({"file":f"{directory}.adoc", "content":f"== Links\n\n"})
@@ -212,7 +212,7 @@ def createRunIndex(directory:str) -> None:
     if isinstance(directory, str):
         os.remove(f"{directory}.adoc") if os.path.exists(f"{directory}.adoc") else None
         y = os.listdir(directory) if os.path.exists(directory) else None
-        l = [x for x in y if not re.search("DELETE|ignore|xxxx.txt", x)]
+        l = [x for x in y if not re.search(".swp$|DELETE|ignore|xxxx.txt", x)]
         if len(l) > 0:
             l.sort()
             os.remove(f"{directory}.adoc") if os.path.exists(f"{directory}.adoc") else None
