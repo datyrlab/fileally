@@ -23,3 +23,16 @@ python fileally/files_python/jobs/docdirectory.py `
 
 ```
 
+## Create/update a project directory
+
+### Linux
+```
+python3 fileally/files_python/jobs/projectsupdate.py \
+--proj '{"filepath":"files_python/json/projects/projectlisttest.json", "pdflist":[]}'
+```
+
+### Windows
+```
+python3 fileally/files_python/jobs/projectsupdate.py \
+--proj '{\"filepath\":\"files_python/json/projects/projectlisttest.json\", \"pdflist\":[]}'
+```
