@@ -88,7 +88,7 @@ def parseDirlist(directories:dict, scrape:dict, dirlist:list):
 def getListOfFiles(scrape:dict, directory:list) -> list:
     if os.path.exists(directory):
         include = scrape.get('include') if isinstance(scrape.get('include'), str) else ".cpp$|.js$|.json$|.py$|.rs$|.sh$|.sql$|.txt$"
-        exclude = scrape.get('exclude') if isinstance(scrape.get('exclude'), str) else "__init__.py$|_01.py$|_02.py$|__pycache__|DELETE|ignore|tests/|test_"
+        exclude = scrape.get('exclude') if isinstance(scrape.get('exclude'), str) else "__init__.py$|_01.py$|_02.py$|.swp$|__pycache__|DELETE|ignore|tests/|test_"
         result = class_files.Files({}).listDirectory(directory)    
         a = [x for x in result if re.search(include, x)]
         return [(directory, x) for x in a if not re.search(exclude, x)] if len(a) > 0 else None
