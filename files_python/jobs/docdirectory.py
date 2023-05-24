@@ -67,8 +67,9 @@ def parseIndex(listoflists:list) -> list:
     if isinstance(listoflists, list):
         [(lambda x: createIndex(x))(x) for x in listoflists]
 
-def createIndex(filelist:list) -> list:
-    if isinstance(filelist, list) and len(filelist) > 0:
+def createIndex(fl:list) -> list:
+    if isinstance(fl, list) and len(fl) > 0:
+        filelist = sorted(fl, key=lambda x: (x[1]))
         indexfile = list(set([x[0] for x in filelist]))[0]
         indexfilelist = [x[1] for x in filelist]
         os.remove(indexfile) if os.path.exists(indexfile) else None

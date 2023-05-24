@@ -31,7 +31,7 @@ class Packages:
             return name 
 
         directories = {"pathlist":[packagedir]}
-        scrape = {"include":".cpp$|.js$|.json$|.py$|.sh$|.sql$|.txt$", "exclude":"__init__.py$|.fspy$|.npy$|.swp$|__pycache__|/resources|/DELETE|ignore", "docpath":self.docpath} 
+        scrape = {"include":".cpp$|.js$|.json$|.py$|.sh$|.sql$|.txt$", "exclude":"__init__.py$|.fspy$|.npy$|.swp$|__pycache__|_01.py$|_02.py$|/resources|/DELETE|ignore", "docpath":self.docpath} 
         pdf = {"make":True}
         dirlist = docdirectory.parseDirectories(directories)
         listoflists = docdirectory.parseDirlist(directories, scrape, dirlist)
