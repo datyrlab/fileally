@@ -204,7 +204,7 @@ def createLinkIndex(directory:str) -> None:
         if len(l) > 0:
             l.sort()
             class_files.Files({}).writeFile({"file":f"{directory}.adoc", "content":f"== Links\n\n"})
-            [(lambda x: class_files.Files({}).writeFile({"file":f"{directory}.adoc", "content":f"include::links/{x}[]\n"}))(x) for x in l]
+            [(lambda x: class_files.Files({}).writeFile({"file":f"{directory}.adoc", "content":f"=== {re.sub('.adoc', '', x)}\ninclude::links/{x}[]\n"}))(x) for x in l]
         else:
             class_files.Files({}).writeFile({"file":f"{directory}.adoc", "content":None})
 
