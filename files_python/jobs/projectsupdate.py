@@ -99,7 +99,7 @@ def documentationDir(proj:dict, directory:str, item:dict):
         (f"{d}/variables.adoc", contentVariables(directory)), \
         (f"{d}/links/xxxx.adoc", None),
         (f"{d}/run/xxxx.txt", rt),
-        (f"{d}/custom/ebook/index.adoc", None)
+        (f"{d}/custom/ebook/index.adoc", contentEbook(directory))
     ]
 
     [(lambda x: class_packages.Packages({}).makeDirectory(x))(x) for x in dirlist]
@@ -136,6 +136,24 @@ def contentIndex(directory:str):
 
 def contentCustom(directory:str):
     return " "
+
+def contentEbook(directory:str):
+    s = []
+    s.append(f"= Ebook")
+    s.append(f":doctype: book")
+    s.append(f":experimental:")
+    s.append(f":toc: left")
+    s.append(f":source-highlighter: rouge")
+    s.append(f":sectnums:")
+    s.append(f":front-cover-image: image:images/cover.png[]\n")
+    s.append(f"== Subtitle\n")
+    s.append(".codeblock")
+    s.append("[source%nowrap, bash]")
+    s.append("----")
+    s.append("//include::xxxx.ext[]")
+    s.append("//image::xxxxx.png[]")
+    s.append("----")
+    return "\n".join(s)
 
 def contentRun(directory:str):
     s = []
