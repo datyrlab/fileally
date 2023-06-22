@@ -236,7 +236,7 @@ def createRunIndex(directory:str) -> None:
             os.remove(f"{directory}.adoc") if os.path.exists(f"{directory}.adoc") else None
             properties = class_files.Files({}).fileProperties(directory)
             class_files.Files({}).writeFile({"file":f"{directory}.adoc", "content":f"== Run\n\n"})
-            [(lambda x: class_files.Files({}).writeFile({"file":f"{directory}.adoc", "content":f"=== {x}\n[source%nowrap, bash]\n----\ninclude::run/{x}[]\n----\n"}))(x) for x in l]
+            [(lambda x: class_files.Files({}).writeFile({"file":f"{directory}.adoc", "content":f"=== {re.sub('.adoc|.txt', '', x)}\n[source%nowrap, bash]\n----\ninclude::run/{x}[]\n----\n"}))(x) for x in l]
         else:
             class_files.Files({}).writeFile({"file":f"{directory}.adoc", "content":None})
 
